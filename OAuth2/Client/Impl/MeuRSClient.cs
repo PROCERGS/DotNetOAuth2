@@ -97,5 +97,16 @@ namespace OAuth2.Client.Impl
                     }
             };
         }
+
+        protected override void BeforeGetUserInfo(BeforeAfterRequestArgs args)
+        {
+            args.Client.Authenticator = null;
+            args.Request.Parameters.Add(new Parameter
+            {
+                Name  = "access_token",
+                Type  = ParameterType.GetOrPost,
+                Value = AccessToken
+            });
+        }
     }
 }

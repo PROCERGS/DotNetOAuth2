@@ -86,9 +86,9 @@ namespace OAuth2.Client.Impl
             return new UserInfo
             {
                 Id = response["sub"].Value<string>(),
-                Email = response["email"].SafeGet(x => x.Value<string>()),
+                Email = response["email"].Value<string>(),
                 FirstName = response["first_name"].Value<string>(),
-                LastName = response["surname"].Value<string>(),
+                LastName = response["given_name"].Value<string>(),
                 AvatarUri =
                     {
                         Small = avatarUri,
